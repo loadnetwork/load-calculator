@@ -1,10 +1,10 @@
-use crate::utils::constants::{FOUR_MB, EIGHT_MB};
+use crate::utils::constants::{EIGHT_MB, FOUR_MB};
 
 #[derive(PartialEq, Clone)]
 pub enum TxType {
     BaseLayer,
     Babe1,
-    Babe2
+    Babe2,
 }
 
 impl TxType {
@@ -17,8 +17,8 @@ impl TxType {
 
     pub fn size_limit(self) -> u64 {
         match self {
-            Self::BaseLayer => EIGHT_MB, // base layer tx input
-            Self::Babe1 | Self::Babe2 => FOUR_MB // chunk size
+            Self::BaseLayer => EIGHT_MB,          // base layer tx input
+            Self::Babe1 | Self::Babe2 => FOUR_MB, // chunk size
         }
     }
 
@@ -35,4 +35,3 @@ impl TxType {
         count
     }
 }
-

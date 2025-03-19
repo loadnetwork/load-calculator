@@ -1,19 +1,14 @@
-
-use axum::{routing::get, Router};
+use crate::utils::server::{get_price_babe, get_price_baselayer, root};
+use axum::{Router, routing::get};
 use std::time::Duration;
 use tower_http::timeout::TimeoutLayer;
-use crate::utils::storage_calculator::cost_calculator;
-use crate::utils::types::TxType;
-use crate::utils::server::{get_price_babe, root, get_price_baselayer};
 
 pub mod utils;
 
 #[shuttle_runtime::main]
 async fn main() -> shuttle_axum::ShuttleAxum {
     let timeout_layer = TimeoutLayer::new(Duration::from_secs(10));
-    let cost = cost_calculator(TxType::Babe2, 4216212).unwrap();
-    println!("{:?}", cost);
-    
+
     // server routes
     let router = Router::new()
         .route("/", get(root))

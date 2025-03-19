@@ -1,4 +1,4 @@
-use crate::utils::server::{get_price_babe, get_price_baselayer, root};
+use crate::utils::server::{get_price_babe, get_price_baselayer, get_price_celestia, root};
 use axum::{Router, routing::get};
 use std::time::Duration;
 use tower_http::timeout::TimeoutLayer;
@@ -16,6 +16,7 @@ async fn main() -> shuttle_axum::ShuttleAxum {
         // v1 routes
         .route("/v1/baselayer/:size", get(get_price_baselayer))
         .route("/v1/babe/:size", get(get_price_babe))
+        .route("/v1/celestia/:size", get(get_price_celestia))
         .layer(timeout_layer);
 
     Ok(router.into())

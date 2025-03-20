@@ -1,3 +1,4 @@
+pub mod avail;
 pub mod celestia;
 pub mod constants;
 pub mod server;

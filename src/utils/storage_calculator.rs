@@ -16,9 +16,12 @@ pub fn cost_calculator(tx_type: TxType, mut data_size: u64) -> Result<f32, Error
 }
 
 pub async fn get_token_price(ticker: &str) -> Result<f64, Error> {
-    let url: String = format!("https://api.redstone.finance/prices/?symbol={}&provider=redstone&limit=1", ticker)
-        .parse()
-        .unwrap();
+    let url: String = format!(
+        "https://api.redstone.finance/prices/?symbol={}&provider=redstone&limit=1",
+        ticker
+    )
+    .parse()
+    .unwrap();
     let req: Value = reqwest::get(url).await?.json().await?;
     let res: f64 = req.get(0).unwrap().get("value").unwrap().as_f64().unwrap();
     Ok(res)

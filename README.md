@@ -7,7 +7,7 @@ Let me fix the syntax error while maintaining the Markdown format:
 
 ##### Base endpoint: [calculator.load.rs](https://calculator.load.rs)
 
-### BaseLayer data
+### Load Network BaseLayer data
 
 Storing data on Load Network via the baselayer route means that there are no restriction on the tx's input (OPCODEs, etc), tx's target or more properties, it's simply sending a tx the normal way on Load Network
 
@@ -15,13 +15,30 @@ Storing data on Load Network via the baselayer route means that there are no res
 GET /v1/baselayer/:data_size_in_bytes
 ```
 
-### 0xbabe data
+### Load Network 0xbabe data
 
 Data sent to Load Network as `0xbabe` transaction format (learn more about Bundler's 0xbabe tx format [here](https://github.com/weaveVM/bundler)) is more cost efficient and have optimizations on data size limit and reconstruction -- 0xbabe txs come with strict data input restrictions (no OPCODEs allowed, data should be strictly for data settlement purpose, following the Bundler data protocol specs)
 
 ```bash
-GET /v2/babe/:data_size_in_byes
+GET /v1/babe/:data_size_in_bytes
 ```
+
+### Celestia DA
+
+```bash
+GET /v1/celestia/:data_size_in_bytes
+```
+
+### Avail DA
+
+```bash
+GET /v1/avail/:data_size_in_bytes
+```
+
+## External pricing resources:
+* https://docs.availproject.org/docs/learn-about-avail/tx-pricing#fees-calculation-for-da-transactions
+* https://docs.celestia.org/how-to-guides/submit-data#fees-and-gas-limits
+
 
 ## License
 This repository is licensed under the [MIT License](./LICENSE)

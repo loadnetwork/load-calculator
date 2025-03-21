@@ -21,7 +21,9 @@ async fn main() -> shuttle_axum::ShuttleAxum {
         .route("/", get(root))
         .route("/v1", get(root))
         // v1 routes
+        // load network
         .route("/v1/baselayer/:size", get(get_price_baselayer))
+        // load network
         .route("/v1/babe/:size", get(get_price_babe))
         .route("/v1/celestia/:size", get(get_price_celestia))
         .route("/v1/avail/:size", get(get_price_avail))
